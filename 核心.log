@@ -1,0 +1,345 @@
+﻿[~JXXY_Service_DC_Core]qu
+<JXXY_Service_DC_Core>dis cur
+!Software Version V200R005C00SPC800
+!Last configuration was updated at 2022-11-16 15:56:32+00:00 by jxxyadmin
+!Last configuration was saved at 2021-11-09 16:41:21+00:00 by jxxyadmin
+#
+sysname JXXY_Service_DC_Core
+#
+system resource standard
+#
+device board 1 board-type CE6865-48S8CQ-EI
+#
+drop-profile default
+#
+dcb pfc
+#
+dcb ets-profile default
+#
+vlan batch 11 to 12 1000 2000 4000 to 4003
+#
+ecc peer-public-key 172.16.116.96
+ public-key-code begin
+  0400E78D 52959F99 2B02D9B1 039960E5 329AB18F C33AC820 61798B69 D594E4BA
+  FDA0BCBC 1E38622A 976C8397 9D4ACD57 E75A11DD 5125A08D A877146E C4403A85
+  6A54DD01 3C9B0EE2 D1BFD528 882CF1B6 B651441D 4BBA1827 EEB2BAA4 3F14B01A
+  35757BCC 20F93992 A87584AC 170242B9 8BF64F47 D085A0E5 032E2702 D1F5E9B8
+  D22A869C C9
+ public-key-code end
+ peer-public-key end
+#
+ecc peer-public-key 172.16.116.97
+ public-key-code begin
+  0400289A 21715133 E915B837 F1FE9E4D 3A9E3BF0 94EFB32C 74F48E61 EE1C6474
+  2C01FE98 7F6BB11D 5031F45E 0524B7CA BD8C1DD9 27AAEB2C B8BA32E1 81574DB6
+  9C1A5500 C0C92D7D D1DEDD67 2D6F7090 BE0A9A5C 5E6ADD13 E439FA85 78E01D30
+  91C11A0C CC1C1B59 3B5483F2 35A53131 CCDDE711 3D80DC34 395309FC F79ED8A2
+  80C045FA 90
+ public-key-code end
+ peer-public-key end
+#
+ecc peer-public-key 172.16.116.98
+ public-key-code begin
+  0401865E B6501218 43190BDE 1849136F A6CA41B2 442598F5 74FD4145 CC8AD9DC
+  FA76E42F 2CB409EF 38079A19 2ED4DFEE A61A7D9B 26A68261 A50BE1A1 E5146960
+  CD684300 C2F92DC9 4AB6F555 1BE6C387 59E1BEDA BCDE205C 50770CF2 8D94D2FA
+  23B0DABD A1C4D7A2 1096041E 25BE5142 33B217B0 D0BFD801 23894B90 9BD72E6C
+  89A1C200 43
+ public-key-code end
+ peer-public-key end
+#
+telnet server disable
+telnet ipv6 server disable
+#
+diffserv domain default
+#
+vlan 11
+ description TO_FW
+#
+vlan 12
+ description to 6_floor_core
+#
+aaa
+ local-user jxxyadmin password irreversible-cipher $1c$C>)K&I)uTP${)/r(>;ra$5ntNW[7CM/YV])0+<d.N,GR$$Hvw2U$
+ local-user jxxyadmin service-type terminal ssh
+ local-user jxxyadmin level 3
+ #
+ authentication-scheme default
+ #
+ authorization-scheme default
+ #
+ accounting-scheme default
+ #              
+ domain default
+ #
+ domain default_admin
+#
+stack
+#
+interface Vlanif1
+#
+interface Vlanif11
+ ip address 192.168.30.5 255.255.255.252
+#
+interface Vlanif12
+ ip address 192.168.30.202 255.255.255.252
+#
+interface Vlanif2000
+ ip address 172.16.253.1 255.255.255.0
+#
+interface Vlanif4000
+ ip address 172.16.115.254 255.255.252.0
+#
+interface Vlanif4001
+ ip address 172.16.119.254 255.255.252.0
+#               
+interface Vlanif4002
+ ip address 172.16.123.254 255.255.252.0
+#
+interface Vlanif4003
+ ip address 172.16.127.254 255.255.252.0
+#
+interface MEth0/0/0
+#
+interface Eth-Trunk1
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface Eth-Trunk2
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+#
+interface Eth-Trunk3
+#
+interface Eth-Trunk20
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ mode lacp-dynamic
+#               
+interface Eth-Trunk21
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ mode lacp-dynamic
+#
+interface Eth-Trunk30
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ mode lacp-dynamic
+#
+interface Eth-Trunk50
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ mode lacp-dynamic
+#
+interface Eth-Trunk51
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 4094
+ mode lacp-dynamic
+#
+interface 25GE1/0/1
+ eth-trunk 1
+ device transceiver 25GBASE-FIBER
+#
+interface 25GE1/0/2
+ eth-trunk 1
+ device transceiver 25GBASE-FIBER
+#
+interface 25GE1/0/3
+ eth-trunk 2
+ device transceiver 25GBASE-FIBER
+#
+interface 25GE1/0/4
+ eth-trunk 2
+ device transceiver 25GBASE-FIBER
+#
+interface 25GE1/0/5
+#
+interface 25GE1/0/6
+#
+interface 25GE1/0/7
+#
+interface 25GE1/0/8
+#
+interface 25GE1/0/9
+#               
+interface 25GE1/0/10
+#
+interface 25GE1/0/11
+#
+interface 25GE1/0/12
+#
+interface 25GE1/0/13
+#
+interface 25GE1/0/14
+#
+interface 25GE1/0/15
+ device transceiver 10GBASE-FIBER
+#
+interface 25GE1/0/16
+#
+interface 25GE1/0/17
+ device transceiver 1000BASE-X
+#
+interface 25GE1/0/18
+ device transceiver 25GBASE-COPPER
+#
+interface 25GE1/0/19
+#               
+interface 25GE1/0/20
+ device transceiver 25GBASE-COPPER
+#
+interface 25GE1/0/21
+#
+interface 25GE1/0/22
+ device transceiver 10GBASE-FIBER
+#
+interface 25GE1/0/23
+#
+interface 25GE1/0/24
+ device transceiver 25GBASE-COPPER
+#
+interface 25GE1/0/25
+ device transceiver 1000BASE-X
+ port mode GE
+#
+interface 25GE1/0/26
+ port mode GE
+#
+interface 25GE1/0/27
+ port mode GE
+#               
+interface 25GE1/0/28
+ device transceiver 25GBASE-COPPER
+ port mode GE
+#
+interface 25GE1/0/29
+#
+interface 25GE1/0/30
+#
+interface 25GE1/0/31
+#
+interface 25GE1/0/32
+#
+interface 25GE1/0/33
+#
+interface 25GE1/0/34
+#
+interface 25GE1/0/35
+ device transceiver 25GBASE-COPPER
+#
+interface 25GE1/0/36
+#
+interface 25GE1/0/37
+ device transceiver 1000BASE-X
+ port mode 10G
+#
+interface 25GE1/0/38
+ description to 6_floor
+ port default vlan 12
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/39
+ eth-trunk 20
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/40
+ eth-trunk 20
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/41
+ eth-trunk 21
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#               
+interface 25GE1/0/42
+ eth-trunk 21
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/43
+ eth-trunk 50
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/44
+ eth-trunk 50
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/45
+ eth-trunk 51
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/46
+ eth-trunk 51
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/47
+ port default vlan 11
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 25GE1/0/48
+ eth-trunk 30
+ device transceiver 10GBASE-FIBER
+ port mode 10G
+#
+interface 100GE1/0/1
+ device transceiver 100GBASE-COPPER
+#
+interface 100GE1/0/2
+ device transceiver 100GBASE-COPPER
+#
+interface 100GE1/0/3
+ device transceiver 100GBASE-FIBER
+#
+interface 100GE1/0/4
+ port default vlan 4000
+ device transceiver 100GBASE-FIBER
+#
+interface 100GE1/0/5
+ device transceiver 100GBASE-COPPER
+#
+interface 100GE1/0/6
+#
+interface 100GE1/0/7
+ device transceiver 100GBASE-COPPER
+#
+interface 100GE1/0/8
+#
+interface NULL0
+#
+ip route-static 0.0.0.0 0.0.0.0 172.16.253.3
+ip route-static 0.0.0.0 0.0.0.0 192.168.30.6
+ip route-static 192.168.62.0 255.255.254.0 192.168.30.201
+#
+stelnet server enable
+ssh authorization-type default aaa
+#
+ssh server cipher aes256_ctr aes128_ctr
+ssh server hmac sha2_256_96 sha2_256 sha1_96
+ssh server key-exchange dh_group_exchange_sha256 dh_group_exchange_sha1 ecdh_sha2_nistp256 ecdh_sha2_nistp384 ecdh_sha2_nistp521 sm2_kep
+#
+ssh client first-time enable
+ssh client 172.16.116.96 assign ecc-key 172.16.116.96
+ssh client 172.16.116.97 assign ecc-key 172.16.116.97
+ssh client 172.16.116.98 assign ecc-key 172.16.116.98
+#
+user-interface con 0
+ authentication-mode password
+ set authentication password cipher $1c$-a*FK]Kqo!$=~~V@Sg:%0ee:!&Oo;l/9j8I!w-*1=O23L=v(P^W$
+#
+user-interface vty 0 4
+ authentication-mode aaa
+ user privilege level 3
+ protocol inbound ssh
+#
+vm-manager
+#
+return
+<JXXY_Service_DC_Core>                     
